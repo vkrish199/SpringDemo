@@ -4,6 +4,8 @@ The configurations can be based on following:
 2. Java based
 3. Annotation based
 
+Note that in this project we will use XML based configuration
+
 XML based:
 Refer-springInitialWithScopes method
 Refer spring.xml - we need to define the beans here with id and class
@@ -70,5 +72,6 @@ context.getBean("alien", Alien.class);
 we can also use
 context.getBean(Computer.class); in this case we need to have either one of the 
 matching beans marked as primary or we need to have only 1 matching bean
+
 
 Inner Bean - refer to innerBean method
