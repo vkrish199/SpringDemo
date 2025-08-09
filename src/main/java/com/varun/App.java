@@ -15,7 +15,14 @@ public class App
 //        new App().spring_initial_with_scopes(context);
 //        new App().setter_injection(context);
 //        new App().reference_attribute(context);
-        new App().constructor_injection(context);
+//        new App().constructor_injection(context);
+        new App().interface_example(context);
+    }
+
+    public void interface_example(ApplicationContext context) {
+        Alien obj = (Alien) context.getBean("alien");
+        System.out.println(obj.getAge());
+        obj.code();
     }
 
     public void constructor_injection(ApplicationContext context) {

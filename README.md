@@ -46,3 +46,15 @@ public Alien(int age, Laptop lap) {
 this.age = age;
 this.lap = lap;
 }
+
+Creating Interface - refer interface_example method
+
+We can use autowire="byName" in order for spring to automatically inject
+the dependencies
+ref property takes precedence over autowire
+
+Autowiring can be done in 2 ways:
+byName - automatically resolves variable name with the matching bean id (we can only
+have 1 bean defined with that id)
+byType - automatically resolves based on the type of the variable with the class of
+the bean, here as well we can only have one bean defined with the matching type

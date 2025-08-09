@@ -19,7 +19,10 @@
 <!--    </bean>-->
 
 <!--  Constructor Injection  -->
-    <bean id="alien" class="com.varun.Alien">
+<!--  Autowire by name  -->
+<!--    <bean id="alien" class="com.varun.Alien" autowire="byName">-->
+<!--  Autowire by type  -->
+    <bean id="alien" class="com.varun.Alien" autowire="byType">
 <!--    With Below, the sequence or order is important    -->
 <!--        <constructor-arg value="21" />-->
 <!--        <constructor-arg ref="laptop" />-->
@@ -27,15 +30,24 @@
 <!--        <constructor-arg value="21" type="int"/>-->
 <!--        <constructor-arg ref="laptop" type="com.varun.Laptop" />-->
 <!--    We can solve it by using index    -->
-        <constructor-arg ref="laptop" index="1"/>
-        <constructor-arg value="21" index="0"/>
+<!--        <constructor-arg ref="laptop" index="1"/>-->
+<!--        <constructor-arg value="21" index="0"/>-->
 <!--    Another way is to use names of the variables themselves but this needs order too   -->
 <!--        <constructor-arg name="age" value="21"/>-->
 <!--        <constructor-arg name="lap" ref="laptop"/>-->
+<!--    Interfaces example    -->
+        <property name="age" value="21"/>
+<!--    Even if we do autowire, the below reference take precedence    -->
+<!--        <property name="com" ref="com1"/>-->
     </bean>
 
+<!--    <bean id="com1" class="com.varun.Laptop">-->
+<!--    </bean>-->
 
-    <bean id="laptop" class="com.varun.Laptop">
+    <bean id="com2" class="com.varun.Desktop">
     </bean>
+
+<!--    <bean id="laptop" class="com.varun.Laptop">-->
+<!--    </bean>-->
 
 </beans>
