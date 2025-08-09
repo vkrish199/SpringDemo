@@ -9,8 +9,31 @@
 <!--    </bean>-->
 
 <!--  If the scope is prototype, it creates a new object everytime  -->
-    <bean id="alien" class="com.varun.Alien" scope="prototype">
+<!--    <bean id="alien" class="com.varun.Alien" scope="prototype">-->
+<!--    </bean>-->
+
+<!--  Using a ref we can refer to another class object by passing the id  -->
+<!--    <bean id="alien" class="com.varun.Alien">-->
+<!--        <property name="age" value="21"></property>-->
+<!--        <property name="lap" ref="laptop"></property>-->
+<!--    </bean>-->
+
+<!--  Constructor Injection  -->
+    <bean id="alien" class="com.varun.Alien">
+<!--    With Below, the sequence or order is important    -->
+<!--        <constructor-arg value="21" />-->
+<!--        <constructor-arg ref="laptop" />-->
+<!--    With Below, it won't work if there are more than 1 var of same type    -->
+<!--        <constructor-arg value="21" type="int"/>-->
+<!--        <constructor-arg ref="laptop" type="com.varun.Laptop" />-->
+<!--    We can solve it by using index    -->
+        <constructor-arg ref="laptop" index="1"/>
+        <constructor-arg value="21" index="0"/>
+<!--    Another way is to use names of the variables themselves but this needs order too   -->
+<!--        <constructor-arg name="age" value="21"/>-->
+<!--        <constructor-arg name="lap" ref="laptop"/>-->
     </bean>
+
 
     <bean id="laptop" class="com.varun.Laptop">
     </bean>

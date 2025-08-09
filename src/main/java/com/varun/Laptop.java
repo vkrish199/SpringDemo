@@ -6,4 +6,8 @@ public class Laptop {
         System.out.println("Laptop Object created");
     }
 
+    public void compile() {
+        System.out.println("Compiling");
+    }
+
 }
