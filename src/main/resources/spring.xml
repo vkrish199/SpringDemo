@@ -37,16 +37,43 @@
 <!--        <constructor-arg name="lap" ref="laptop"/>-->
 <!--    Interfaces example    -->
         <property name="age" value="21"/>
-<!--    Even if we do autowire, the below reference take precedence    -->
-<!--        <property name="com" ref="com1"/>-->
+<!--    Even if we do autowire or primary or lazy init, the below reference take precedence    -->
+        <property name="com">
+<!--        This is the inner bean, this can only be used by Alien    -->
+            <bean id="com1" class="com.varun.Laptop" primary="true">
+            </bean>
+        </property>
     </bean>
 
 <!--    <bean id="com1" class="com.varun.Laptop">-->
 <!--    </bean>-->
 
-    <bean id="com2" class="com.varun.Desktop">
-    </bean>
+<!--    <bean id="com2" class="com.varun.Desktop">-->
+<!--    </bean>-->
 
+<!-- Defining Primary bean   -->
+<!--    <bean id="com1" class="com.varun.Laptop" primary="true">-->
+<!--    </bean>-->
+
+<!--    <bean id="com2" class="com.varun.Desktop">-->
+<!--    </bean>-->
+
+<!-- Eager init by default   -->
+<!--    <bean id="com1" class="com.varun.Laptop" primary="true">-->
+<!--    </bean>-->
+
+<!--&lt;!&ndash; By adding lazy init true, the object won't get created until we ask for it   &ndash;&gt;-->
+<!--    <bean id="com2" class="com.varun.Desktop" lazy-init="true">-->
+<!--    </bean>-->
+
+<!--    <bean id="com1" class="com.varun.Laptop" primary="true">-->
+<!--    </bean>-->
+<!--&lt;!&ndash; context.getBean(Desktop.class); will look for this   &ndash;&gt;-->
+<!--    <bean class="com.varun.Desktop" lazy-init="true">-->
+<!--    </bean>-->
+
+<!--    <bean id="com1" class="com.varun.Laptop" primary="true">-->
+<!--    </bean>-->
 <!--    <bean id="laptop" class="com.varun.Laptop">-->
 <!--    </bean>-->
 

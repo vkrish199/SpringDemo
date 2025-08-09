@@ -11,39 +11,76 @@ public class App
         //It creates a spring container
         //All the objects will be created here for all the bean tags which are of singleton prototype
         //It does not create objects for prototype scope beans
-        ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
-//        new App().spring_initial_with_scopes(context);
-//        new App().setter_injection(context);
-//        new App().reference_attribute(context);
-//        new App().constructor_injection(context);
-        new App().interface_example(context);
+        ApplicationContext context =
+                new ClassPathXmlApplicationContext("spring.xml");
+//        new App().springInitialWithScopes(context);
+//        new App().setterInjection(context);
+//        new App().referenceAttribute(context);
+//        new App().constructorInjection(context);
+//        new App().interfaceExample(context);
+//        new App().primaryBeanExample(context);
+//        new App().lazyBeanInit(context);
+//        new App().getBeanByType(context);
+        new App().innerBean(context);
     }
 
-    public void interface_example(ApplicationContext context) {
+    public void innerBean(ApplicationContext context) {
+        Alien obj = context.getBean("alien", Alien.class);
+
+        System.out.println(obj.getAge());
+        obj.code();
+    }
+
+    public void getBeanByType(ApplicationContext context) {
+        Alien obj = context.getBean("alien", Alien.class);
+
+        System.out.println(obj.getAge());
+        obj.code();
+        Computer obj2 = context.getBean(Computer.class);
+        Desktop obj1 = context.getBean(Desktop.class);
+    }
+
+    public void lazyBeanInit(ApplicationContext context) {
+        Alien obj = (Alien) context.getBean("alien");
+        System.out.println(obj.getAge());
+
+        obj.code();
+        //because com2 bean is defined as lazy init true, the object gets created
+        //only after running below code
+//        Computer desk = (Desktop)context.getBean("com2");
+    }
+
+    public void primaryBeanExample(ApplicationContext context) {
         Alien obj = (Alien) context.getBean("alien");
         System.out.println(obj.getAge());
         obj.code();
     }
 
-    public void constructor_injection(ApplicationContext context) {
+    public void interfaceExample(ApplicationContext context) {
+        Alien obj = (Alien) context.getBean("alien");
+        System.out.println(obj.getAge());
+        obj.code();
+    }
+
+    public void constructorInjection(ApplicationContext context) {
         Alien obj = (Alien) context.getBean("alien");
         obj.code();
     }
 
-    public void reference_attribute(ApplicationContext context) {
+    public void referenceAttribute(ApplicationContext context) {
         Alien obj = (Alien)context.getBean("alien");
         System.out.println(obj.getAge());
         obj.code();
     }
 
-    public void setter_injection(ApplicationContext context) {
+    public void setterInjection(ApplicationContext context) {
         Alien obj = (Alien)context.getBean("alien");
         //the age 21 is set from XML bean property
         System.out.println(obj.getAge());
         obj.code();
     }
 
-    public void spring_initial_with_scopes(ApplicationContext context) {
+    public void springInitialWithScopes(ApplicationContext context) {
         System.out.println();
         System.out.println( "Hello World!" );
 
